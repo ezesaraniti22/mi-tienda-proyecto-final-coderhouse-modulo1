@@ -9,7 +9,7 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Definir rutas principales
+// Rutas
 app.use("/api/products", productRoutes);
 app.use("/api/carts", cartRoutes);
 
