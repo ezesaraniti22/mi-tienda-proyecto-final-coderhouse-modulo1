@@ -42,16 +42,8 @@
     ]
   },
   {
-    "id": 4,
-    "title": "Auriculares Gamer",
-    "description": "Auriculares gamer con luces RGB",
-    "code": "AU123",
-    "price": 80,
-    "status": true,
-    "stock": 50,
-    "category": "Accesorios",
-    "thumbnails": [
-      "auris.jpg"
-    ]
+    "id": 5,
+    "title": "Ballesta",
+    "price": 50
   }
 ]
