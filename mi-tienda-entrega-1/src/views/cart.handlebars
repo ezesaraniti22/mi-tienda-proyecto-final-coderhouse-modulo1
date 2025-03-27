@@ -1,13 +1,16 @@
-<h1>Mi carrito</h1>
-<ul>
+<h1>Mi Carrito</h1>
+
+<div class="product-container">
   {{#each products}}
-    <li>
-      <strong>{{this.product.title}}</strong> - Cantidad: {{this.quantity}} <br>
-      Precio unitario: ${{this.product.price}} <br>
+    <div class="card">
+      <strong>{{this.product.title}}</strong>
+      <p><b>Cantidad:</b> {{this.quantity}}</p>
+      <p><b>Precio:</b> ${{this.product.price}}</p>
       <button onclick="removeFromCart('{{this.product._id}}')">Eliminar</button>
-    </li>
+    </div>
   {{/each}}
-</ul>
+</div>
+
 
 <script>
   function removeFromCart(productId) {

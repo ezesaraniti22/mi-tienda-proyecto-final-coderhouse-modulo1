@@ -19,6 +19,11 @@ router.get("/products", async (req, res) => {
   });
 });
 
+// Página principal con los botones
+router.get("/", (req, res) => {
+  res.render("home");
+});
+
 router.get("/products/:pid", async (req, res) => {
   const product = await Product.findById(req.params.pid).lean();
   if (!product) return res.status(404).send("Producto no encontrado");

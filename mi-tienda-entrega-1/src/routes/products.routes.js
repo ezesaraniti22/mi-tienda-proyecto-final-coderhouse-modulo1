@@ -4,7 +4,7 @@ const Product = require("../models/Product");
 const router = express.Router();
 
 /**
- * 1️⃣ GET /api/products — Listar productos con paginación, filtro y ordenamiento
+ * GET /api/products — Listar productos con paginación, filtro y ordenamiento
  */
 router.get("/", async (req, res) => {
   try {
@@ -50,7 +50,7 @@ router.get("/", async (req, res) => {
 });
 
 /**
- * 2️⃣ GET /api/products/:pid — Obtener producto por ID
+ * GET /api/products/:pid — Obtener producto por ID
  */
 router.get("/:pid", async (req, res) => {
   try {
@@ -65,7 +65,7 @@ router.get("/:pid", async (req, res) => {
 });
 
 /**
- * 3️⃣ POST /api/products — Crear nuevo producto con validaciones
+ * POST /api/products — Crear nuevo producto con validaciones
  */
 router.post("/", async (req, res) => {
   try {
@@ -102,7 +102,7 @@ router.post("/", async (req, res) => {
 });
 
 /**
- * 4️⃣ PUT /api/products/:pid — Actualizar producto por ID
+ * PUT /api/products/:pid — Actualizar producto por ID
  */
 router.put("/:pid", async (req, res) => {
   try {
@@ -125,7 +125,7 @@ router.put("/:pid", async (req, res) => {
 });
 
 /**
- * 5️⃣ DELETE /api/products/:pid — Eliminar producto por ID
+ * 5️DELETE /api/products/:pid — Eliminar producto por ID
  */
 router.delete("/:pid", async (req, res) => {
   try {

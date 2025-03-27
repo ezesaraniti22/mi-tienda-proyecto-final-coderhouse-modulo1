@@ -1,14 +1,23 @@
 <h1>Productos</h1>
-<ul>
+
+<div class="product-container">
   {{#each products}}
-    <li>
-      <strong>{{this.title}}</strong> - ${{this.price}} <br>
-      Categoría: {{this.category}} <br>
-      <a href="/products/{{this._id}}">Ver detalle</a> |
-      <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
-    </li>
+    <div class="card">
+      <strong>{{this.title}}</strong>
+      <p><b>Precio:</b> ${{this.price}}</p>
+      <p><b>Categoría:</b> {{this.category}}</p>
+      <a href="/products/{{this._id}}">Ver Detalle</a>
+      <button onclick="addToCart('{{this._id}}')">Agregar al Carrito</button>
+    </div>
   {{/each}}
-</ul>
+</div>
+
+<div class="pagination">
+  {{#if hasPrevPage}}<a href="/products?page={{prevPage}}">⬅ Anterior</a>{{/if}}
+  Página {{page}} de {{totalPages}}
+  {{#if hasNextPage}}<a href="/products?page={{nextPage}}">Siguiente ➡</a>{{/if}}
+</div>
+
 
 <!-- Navegación de páginas -->
 <div style="margin-top: 20px;">
@@ -33,13 +42,12 @@
       localStorage.setItem("cartId", cartId);
       console.log("🛒 Carrito creado automáticamente:", cartId);
     } catch (err) {
-      console.error("❌ Error al crear carrito:", err);
+      console.error("Error al crear carrito:", err);
       alert("No se pudo crear el carrito");
       return;
     }
   }
 
-  // Ahora sí, agregamos el producto
   try {
     const res = await fetch(`/api/carts/${cartId}/products/${productId}`, {
       method: "PUT",
@@ -54,7 +62,7 @@
 
     alert("✅ Producto agregado al carrito");
   } catch (err) {
-    console.error("❌ Error al agregar producto:", err);
+    console.error("Error al agregar producto:", err);
     alert("Error al agregar al carrito: " + err.message);
   }
 }

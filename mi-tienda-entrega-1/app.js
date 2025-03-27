@@ -33,7 +33,7 @@ app.use("/api/carts", cartRoutes);
 app.use("/", viewsRoutes);
 
 // Conectar a Mongo y levantar servidor
-mongoose.connect("mongodb://localhost:27017/ecommerce", {
+mongoose.connect("mongodb+srv://ecommerceUser:ecommercePass123@ecommerceuser.aw1dlcm.mongodb.net/?retryWrites=true&w=majority&appName=ecommerceUser", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

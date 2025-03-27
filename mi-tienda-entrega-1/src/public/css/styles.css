@@ -1,22 +1,150 @@
 body {
-    font-family: sans-serif;
-    padding: 20px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background: #f1f1f1;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  form input {
-    margin: 5px 0;
-    display: block;
-  }
-  
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2 {
+  color: #212529;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card strong {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.card button, .card a {
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card button {
+  background-color: #00a650; /* MercadoLibre verde */
+  color: white;
+}
+
+.card button:hover {
+  background-color: #007a3c;
+}
+
+.card a {
+  background-color: #3483fa;
+  color: white;
+}
+
+.card a:hover {
+  background-color: #2968c8;
+}
+
+.pagination {
+  margin-top: 30px;
+}
+
+.pagination a {
+  margin: 0 10px;
+  padding: 10px 15px;
+  background-color: #3483fa;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #2968c8;
+}
+
+form {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-top: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+form input,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #00a650;
+  color: white;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #007a3c;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #343a40;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #495057;
+}
