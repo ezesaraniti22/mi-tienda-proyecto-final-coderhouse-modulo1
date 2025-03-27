@@ -5,19 +5,46 @@ const Cart = require("../models/Cart");
 const router = express.Router();
 
 router.get("/products", async (req, res) => {
-  const { page = 1 } = req.query;
-  const result = await Product.paginate({}, { page, limit: 10, lean: true });
+  const { page = 1, limit = 10, sort, query } = req.query;
+
+  let filter = {};
+  if (query) {
+    if (query === "true" || query === "false") {
+      filter.status = query === "true";
+    } else {
+      filter.category = query;
+    }
+  }
+
+  let sortOptions = {};
+  if (sort === "asc") sortOptions.price = 1;
+  if (sort === "desc") sortOptions.price = -1;
+
+  const result = await Product.paginate(filter, {
+    page,
+    limit,
+    sort: sortOptions,
+    lean: true,
+  });
+
+  // Obtener lista de categorías únicas
+  const allProducts = await Product.find().lean();
+  const categories = [...new Set(allProducts.map(p => p.category))];
 
   res.render("products", {
     products: result.docs,
+    totalPages: result.totalPages,
+    page: result.page,
     hasPrevPage: result.hasPrevPage,
     hasNextPage: result.hasNextPage,
     prevPage: result.prevPage,
     nextPage: result.nextPage,
-    totalPages: result.totalPages,
-    page: result.page
+    categories,
+    currentQuery: query || "",
+    currentSort: sort || ""
   });
 });
+
 
 // Página principal con los botones
 router.get("/", (req, res) => {

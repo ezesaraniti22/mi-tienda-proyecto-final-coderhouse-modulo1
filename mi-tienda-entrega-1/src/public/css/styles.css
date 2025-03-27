@@ -148,3 +148,43 @@ form button:hover {
 .navbar a:hover {
   background-color: #495057;
 }
+
+.products-page {
+  display: flex;
+  gap: 30px;
+}
+
+/* 🎛 Barra lateral de filtros */
+.filters {
+  width: 220px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.filters h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.filters label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: bold;
+  color: #444;
+}
+
+.filters select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.product-list {
+  flex-grow: 1;
+}

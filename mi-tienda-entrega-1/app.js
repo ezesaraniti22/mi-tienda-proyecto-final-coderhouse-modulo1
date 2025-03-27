@@ -16,7 +16,13 @@ const app = express();
 const PORT = 8080;
 
 // Configurar Handlebars
-app.engine("handlebars", handlebars.engine());
+const hbs = handlebars.create({
+  helpers: {
+    ifEquals: (a, b) => a === b
+  }
+});
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "/src/views"));
 
