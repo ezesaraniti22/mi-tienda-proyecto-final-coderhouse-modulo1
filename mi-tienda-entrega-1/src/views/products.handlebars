@@ -1,0 +1,61 @@
+<h1>Productos</h1>
+<ul>
+  {{#each products}}
+    <li>
+      <strong>{{this.title}}</strong> - ${{this.price}} <br>
+      Categoría: {{this.category}} <br>
+      <a href="/products/{{this._id}}">Ver detalle</a> |
+      <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+    </li>
+  {{/each}}
+</ul>
+
+<!-- Navegación de páginas -->
+<div style="margin-top: 20px;">
+  {{#if hasPrevPage}}<a href="/products?page={{prevPage}}">⬅ Anterior</a>{{/if}}
+  Página {{page}} de {{totalPages}}
+  {{#if hasNextPage}}<a href="/products?page={{nextPage}}">Siguiente ➡</a>{{/if}}
+</div>
+
+<script>
+  async function addToCart(productId) {
+  let cartId = localStorage.getItem("cartId");
+
+  // Si no existe el carrito, lo creamos
+  if (!cartId) {
+    try {
+      const res = await fetch("/api/carts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+      });
+      const data = await res.json();
+      cartId = data.cart._id;
+      localStorage.setItem("cartId", cartId);
+      console.log("🛒 Carrito creado automáticamente:", cartId);
+    } catch (err) {
+      console.error("❌ Error al crear carrito:", err);
+      alert("No se pudo crear el carrito");
+      return;
+    }
+  }
+
+  // Ahora sí, agregamos el producto
+  try {
+    const res = await fetch(`/api/carts/${cartId}/products/${productId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quantity: 1 })
+    });
+
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.message || "Error al agregar al carrito");
+    }
+
+    alert("✅ Producto agregado al carrito");
+  } catch (err) {
+    console.error("❌ Error al agregar producto:", err);
+    alert("Error al agregar al carrito: " + err.message);
+  }
+}
+</script>
